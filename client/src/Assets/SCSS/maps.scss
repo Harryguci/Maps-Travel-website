@@ -1,0 +1,51 @@
+@use "base";
+
+.information-box {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+
+  @media (max-width: 767px) {
+    bottom: 1.5rem;
+    font-size: 0.7rem;
+    top: auto !important;
+  }
+
+  .list-group-item {
+    font-size: 0.8rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border: none;
+    b {
+      color: rgb(50, 50, 230);
+    }
+  }
+}
+
+.maps-section {
+  > .row {
+    flex-direction: row;
+  }
+  &__control {
+    min-width: 100px;
+    flex: 0 0 10% !important;
+  }
+
+  &__main {
+    position: relative;
+  }
+
+  @media (max-width: 767px) {
+    > .row {
+      flex-direction: column-reverse;
+    }
+  }
+}
+
+.alert {
+  position: absolute !important;
+  z-index: 50;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
