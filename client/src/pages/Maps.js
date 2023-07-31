@@ -1,26 +1,40 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState, useEffect, useLayoutEffect } from "react";
+// eslint-disable-next-line no-unused-vars
 import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import "../Assets/SCSS/maps.scss";
 import {
+  // eslint-disable-next-line no-unused-vars
   Circle,
+  // eslint-disable-next-line no-unused-vars
   CircleMarker,
+  // eslint-disable-next-line no-unused-vars
   Popup,
+  // eslint-disable-next-line no-unused-vars
   Rectangle,
+  // eslint-disable-next-line no-unused-vars
   Tooltip,
+  // eslint-disable-next-line no-unused-vars
   LayersControl,
+  // eslint-disable-next-line no-unused-vars
   Marker,
+  // eslint-disable-next-line no-unused-vars
   LayerGroup,
+  // eslint-disable-next-line no-unused-vars
   FeatureGroup,
 } from "react-leaflet";
 
+// eslint-disable-next-line no-unused-vars
 import TooltipCircle from "../components/ToolTipCircle";
 import LocationMarker from "./LocationMarker";
+// eslint-disable-next-line no-unused-vars
 import LayerTerm from "../components/LayerTerm";
 import attributions from "../helpers/osmProvider";
 import ToolTipPoly from "../components/ToolTipPoly";
 import "bootstrap/dist/css/bootstrap.css";
 import {
+  // eslint-disable-next-line no-unused-vars
   Button,
   ListGroup,
   ListGroupItem,
@@ -212,6 +226,9 @@ export default function Maps() {
       >
         <Row>
           <Col className="maps-section__control p-4">
+            <Row>
+              <h3 className="brand">Harryguci</h3>
+            </Row>
             <Row className="my-2 d-flex justify-content-center gap-2">
               {cites &&
                 cites.length &&
@@ -256,6 +273,12 @@ export default function Maps() {
               >
                 Add
               </button>
+            </Row>
+            <Row>
+              <div className="opacity-50">
+                <p>[space] back to current location</p>
+                <p>[-][+] change zoom</p>
+              </div>
             </Row>
           </Col>
           <Col className="maps-section__main">

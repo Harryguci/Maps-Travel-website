@@ -1,5 +1,12 @@
 @use "base";
 
+.brand {
+  color: rgb(20, 20, 150);
+  margin-bottom: 1rem;
+  display: block;
+  width: 100%;
+}
+
 .information-box {
   position: absolute;
   right: 1rem;
@@ -27,7 +34,7 @@
     flex-direction: row;
   }
   &__control {
-    min-width: 100px;
+    min-width: 200px;
     flex: 0 0 10% !important;
   }
 
