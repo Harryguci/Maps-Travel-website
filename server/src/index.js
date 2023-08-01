@@ -46,18 +46,24 @@ app.post("/points/data", async function (req, res, next) {
   points = JSON.parse(points);
   points = Array.from(points);
 
-  points.push({
-    id: data.id,
-    name: data.name,
-    points: data.points,
-  });
+  let check = points.filer(city => city.name.toLowerCase() === data.name.toLowerCase());
 
-  await fs.writeFileSync(
-    path.join(__dirname, "..", "public", "uploads", "points.json"),
-    JSON.stringify(points)
-  );
+  if (check) {
+    res.send({ error: 'The city is already exists' })
+  } else {
+    points.push({
+      id: data.id,
+      name: data.name,
+      points: data.points,
+    });
 
-  res.send(points);
+    await fs.writeFileSync(
+      path.join(__dirname, "..", "public", "uploads", "points.json"),
+      JSON.stringify(points)
+    );
+    res.send(points);
+  }
+
 });
 
 app.get("/points/data", async function (req, res, next) {
@@ -106,7 +112,7 @@ app.post("/send-image", upload.single('image'), async function (req, res, next) 
     JSON.stringify(currentData)
   );
 
-  res.send(item);
+  res.redirect('https://client-maps-travel-website.onrender.com/');
 });
 
 app.get('/get-image', async (req, res) => {
