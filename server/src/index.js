@@ -38,6 +38,7 @@ app.use(express.static(path.join(__dirname, "..", "public")));
 
 app.post("/points/data", async function (req, res, next) {
   const data = req.body;
+  console.log(data);
 
   let points = await fs.readFileSync(
     path.join(__dirname, "..", "public", "uploads", "points.json"),
@@ -46,9 +47,11 @@ app.post("/points/data", async function (req, res, next) {
   points = JSON.parse(points);
   points = Array.from(points);
 
-  let check = points.filer(city => city.name.toLowerCase() === data.name.toLowerCase());
+  let check = points.filter(city => city.name.toLowerCase() === data.name.toLowerCase());
 
-  if (check) {
+  console.log('[CHECK]', check);
+
+  if (check && check.length) {
     res.send({ error: 'The city is already exists' })
   } else {
     points.push({
@@ -63,7 +66,6 @@ app.post("/points/data", async function (req, res, next) {
     );
     res.send(points);
   }
-
 });
 
 app.get("/points/data", async function (req, res, next) {
